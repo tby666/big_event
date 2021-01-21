@@ -56,6 +56,7 @@ $(function() {
                     return layer.msg(res.message)
                 } else {
                     layer.msg('登录成功', { time: 1500 }, function() {
+                        //登录成功后把令牌存到本地，并跳转到首页
                         localStorage.setItem('token', res.token);
                         location.href = 'index.html'
                     })
