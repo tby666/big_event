@@ -16,6 +16,7 @@
 </head>
 
 <body>
+    <!-- 卡片区域 -->
     <div class="layui-card">
         <div class="layui-card-header">文章列表</div>
         <div class="layui-card-body">
@@ -24,6 +25,7 @@
                 <div class="layui-form-item layui-inline">
                     <select name="cate_id"></select>
                 </div>
+
                 <div class="layui-form-item layui-inline">
                     <select name="state">
                         <option value="">所有状态</option>
@@ -59,6 +61,13 @@
             <div id="pageBox"></div>
         </div>
     </div>
+    <!-- 定义模板引擎,多个条目，利用列表渲染 -->
+    <script type="text/html" id="tpl-cate">
+        <option value="">请选择文章类别</option>
+        {{each data}}
+        <option value="{{$value.Id}}">{{$value.name}}</option>
+        {{/each}}
+    </script>
     <!-- 定义模板引擎 -->
     <script type="text/html" id="tpl">
         {{each data}}
@@ -69,13 +78,10 @@
             <td>{{$value.state}}</td>
             <td>
                 <button type="button" class="layui-btn layui-btn-xs">编辑</button>
-                <button type="button" class="layui-btn layui-btn-danger layui-btn-xs">删除</button>
+                <button type="button" class="layui-btn layui-btn-danger layui-btn-xs delete" data-id="{{$value.Id}}">删除</button>
             </td>
         </tr>
         {{/each}}
-
-
-
     </script>
 </body>
 
